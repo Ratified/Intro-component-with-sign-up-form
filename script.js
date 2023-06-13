@@ -39,3 +39,7 @@ function validateForm(event) {
       alert("Done");
     }
   }
+
+  /* Animations */
+  gsap.from('.form', {duration: 1, delay: 2, ease:'bounce', x: '-100vw'});
+  gsap.from('.text', {duration: 1, delay:1, ease: 'bounce', y : '-100vh'});
