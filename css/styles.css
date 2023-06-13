@@ -139,4 +139,9 @@ body {
 .form .My-Form p .terms {
   color: hsl(0, 100%, 74%);
   line-height: 1.5;
+}
+
+footer {
+  margin-inline: auto;
+  width: fit-content;
 }/*# sourceMappingURL=styles.css.map */
