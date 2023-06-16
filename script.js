@@ -1,45 +1,56 @@
-function validateForm(event) {
-    event.preventDefault(); 
-    
-    const errorMessages = document.querySelectorAll('.error');
-    errorMessages.forEach((errorMessage) => {
-      errorMessage.classList.remove('active');
-    });
-    
-    const firstName = document.getElementById('f-name').value.trim();
-    const lastName = document.getElementById('l-name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value.trim();
-    
-    let isValid = true;
-    
-    if (firstName === '') {
-      document.querySelector('.f-name__error').classList.add('active');
-      isValid = false;
-    }
-    
-    if (lastName === '') {
-      document.querySelector('.l-name__error').classList.add('active');
-      isValid = false;
-    }
-    
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      document.querySelector('.email__error').classList.add('active');
-      isValid = false;
-    }
-    
-    if (password === '') {
-      document.querySelector('.password__error').classList.add('active');
-      isValid = false;
-    }
+/* Animations */
+gsap.from('.form', { duration: 1, delay: 2, ease: 'bounce', x: '-100vw' });
+gsap.from('.text', { duration: 1, delay: 1, ease: 'bounce', y: '-100vh' });
 
-    if (isValid) {
-      document.querySelector('.My-Form').submit();
-      alert("Done");
-    }
+/* Get the error messages */
+const fError = document.getElementById('f-name__error');
+const lError = document.getElementById('l-name__error');
+const emailError = document.getElementById('email__error');
+const passwordError = document.getElementById('password__error');
+
+/* Get the input values */
+const fName = document.getElementById('f-name');
+const lName = document.getElementById('l-name');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+
+const submit = document.getElementById('SubmitBtn');
+
+submit.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const fNameValue = fName.value;
+  const lNameValue = lName.value;
+  const emailValue = email.value;
+  const passwordValue = password.value;
+
+  if (fNameValue === '') {
+    fError.style.display = 'block';
+  } else {
+    fError.style.display = 'none';
   }
 
-  /* Animations */
-  gsap.from('.form', {duration: 1, delay: 2, ease:'bounce', x: '-100vw'});
-  gsap.from('.text', {duration: 1, delay:1, ease: 'bounce', y : '-100vh'});
+  if (lNameValue === '') {
+    lError.style.display = 'block';
+  } else {
+    lError.style.display = 'none';
+  }
+
+  if (emailValue === '') {
+    emailError.style.display = 'block';
+  } else {
+    emailError.style.display = 'none';
+  }
+
+  if (passwordValue === '') {
+    passwordError.style.display = 'block';
+  } else {
+    passwordError.style.display = 'none';
+  }
+
+  
+  setTimeout(() => {
+    alert("Form Submitted");
+    location.reload();
+  }, 1000); 
+});
